@@ -1,0 +1,105 @@
+/* ============================================================
+   RailSync — Responsive Layout
+   Mobile-first. The base shell (components.css) is the phone
+   layout. Above 720px we widen the shell and switch dense lists
+   to a grid. Above 1080px we move navigation to a persistent
+   sidebar and lay out the Live page in two columns.
+   ============================================================ */
+
+/* ---------------- Tablet (>= 720px) ---------------- */
+@media (min-width: 720px){
+  .shell{ max-width: 720px; }
+
+  .list{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items:start;
+  }
+  #congestionList{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:10px; padding:0 18px;
+  }
+  #congestionList .congestion-card{ margin:0; }
+
+  .weather-row{ max-width:520px; margin-left:18px; margin-right:auto; }
+  .class-grid{ grid-template-columns:repeat(6,1fr); max-width:560px; }
+  .fare-form{ max-width:560px; }
+
+  .bottomnav{ max-width:720px; }
+}
+
+/* ---------------- Desktop (>= 1080px) ---------------- */
+@media (min-width: 1080px){
+  body{ display:flex; justify-content:center; }
+
+  .shell{
+    max-width: 1080px;
+    border-left:none; border-right:none;
+    padding-bottom: 40px;
+    padding-left: 92px; /* room for sidebar nav */
+    display:grid;
+    grid-template-columns: 1fr;
+  }
+
+  /* sidebar nav replaces bottom nav */
+  .bottomnav{
+    position:fixed; left:0; top:0; bottom:0; transform:none;
+    width:84px; max-width:84px; height:100vh;
+    flex-direction:column; justify-content:flex-start; gap:6px;
+    padding: 28px 10px;
+    border-top:none; border-right:1px solid var(--line);
+  }
+  .nav-btn{ flex:none; padding:12px 4px; border-radius:14px; }
+  .nav-btn.active{ background:var(--accent-dim); }
+
+  .topbar{ border-radius:0 0 24px 24px; margin: 0 0 0 0; }
+
+  .hero-front{ margin-left:0; margin-right:0; }
+  .search-wrap{ padding-left:0; padding-right:0; }
+  .chip-row{ padding-left:0; padding-right:0; }
+  .section-title{ padding-left:0; padding-right:0; }
+  .list{ grid-template-columns:repeat(3,1fr); padding-left:0; padding-right:0; }
+  #congestionList{ grid-template-columns:repeat(3,1fr); padding-left:0; padding-right:0; }
+
+  /* Live page: two-column layout — track/diagnostics/weather/stations
+     on the left, coach layout + forecast pinned on the right */
+  #page-live{
+    display:grid;
+    grid-template-columns: 1.35fr 1fr;
+    grid-template-areas:
+      "hero    hero"
+      "track   forecast"
+      "diag    forecast"
+      "weather coach"
+      "stations coach";
+    column-gap: 18px;
+  }
+  #page-live .hero-card{ grid-area: hero; margin-left:0; margin-right:0; }
+  #page-live .track-map{ grid-area: track; margin-left:0; }
+  #page-live .forecast-card{ grid-area: forecast; margin-right:0; align-self:start; }
+  #page-live .diag-card{ grid-area: diag; margin-left:0; }
+  #page-live .weather-source{ grid-area: weather; margin-left:0; margin-bottom:0; }
+  #page-live .weather-row{ grid-area: weather; margin-top:26px; margin-left:0; }
+  #page-live .stations-table{ grid-area: stations; margin-left:0; }
+  #page-live .coach-section{ grid-area: coach; }
+  #page-live .coach-row{ padding-left:0; flex-wrap:wrap; overflow:visible; }
+
+  .fare-form{ margin-left:0; }
+  .schedule-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+
+  .theme-sheet{ left:auto; right:24px; bottom:24px; border-radius:20px; max-width:360px; transform:translateY(24px) scale(.98); }
+  .theme-sheet.open{ transform:translateY(0) scale(1); }
+  .sheet-backdrop{ background:transparent; }
+}
+
+/* ---------------- Very small phones ---------------- */
+@media (max-width: 360px){
+  .hero-train-logo{ width:88px; }
+  .hero-clock{ font-size:22px; }
+  .forecast-eta{ font-size:28px; }
+}
+
+/* ---------------- Landscape phones: keep bottomnav from eating content ---------------- */
+@media (max-height: 480px) and (max-width: 900px){
+  .bottomnav{ padding-top:4px; padding-bottom:4px; }
+  .nav-btn{ font-size:9px; }
+}

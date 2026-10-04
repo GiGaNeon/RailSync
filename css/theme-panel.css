@@ -1,0 +1,60 @@
+/* ============================================================
+   RailSync — Theme Customization Sheet
+   ============================================================ */
+
+.sheet-backdrop{
+  position:fixed; inset:0; z-index:90; background:rgba(0,0,0,0.5);
+  opacity:0; pointer-events:none; transition:opacity .2s ease;
+}
+.sheet-backdrop.open{ opacity:1; pointer-events:auto; }
+
+.theme-sheet{
+  position:fixed; left:50%; bottom:0; transform:translate(-50%, 100%);
+  width:100%; max-width:480px; z-index:91;
+  background:var(--bg-elevated); border:1px solid var(--line);
+  border-bottom:none; border-radius:24px 24px 0 0;
+  padding:10px 18px calc(22px + env(safe-area-inset-bottom));
+  transition: transform .28s cubic-bezier(.32,.72,0,1);
+  max-height:82vh; overflow-y:auto;
+}
+.theme-sheet.open{ transform:translate(-50%, 0); }
+
+.sheet-grip{ width:36px; height:4px; border-radius:99px; background:var(--line); margin:6px auto 14px; }
+.sheet-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
+.sheet-head h3{ font-size:15px; font-family:var(--font-display); }
+.sheet-close{ width:30px; height:30px; border-radius:9px; border:1px solid var(--line); background:var(--panel); color:var(--muted); display:flex; align-items:center; justify-content:center; }
+
+.settings-group{ margin-bottom:18px; }
+.settings-label{ font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted-2); margin-bottom:10px; }
+
+.mode-row{ display:flex; gap:8px; }
+.mode-opt{
+  flex:1; display:flex; flex-direction:column; align-items:center; gap:6px;
+  padding:12px 6px; border-radius:14px; background:var(--panel); border:1px solid var(--line);
+  color:var(--muted); font-size:11.5px;
+}
+.mode-opt svg{ width:18px; height:18px; }
+.mode-opt.sel{ border-color:var(--accent-border); background:var(--accent-dim); color:var(--accent); }
+
+.swatch-row{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+.swatch{
+  width:34px; height:34px; border-radius:50%; border:2px solid transparent;
+  cursor:pointer; position:relative; flex-shrink:0;
+}
+.swatch.sel{ border-color:var(--text); box-shadow:0 0 0 2px var(--bg-elevated); }
+.swatch.sel::after{
+  content:''; position:absolute; inset:0; margin:auto; width:8px; height:8px;
+  border-radius:50%; background:#fff; mix-blend-mode:difference;
+}
+.swatch-custom{
+  width:34px; height:34px; border-radius:50%; border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center; background:var(--panel);
+  position:relative; overflow:hidden; flex-shrink:0; cursor:pointer;
+}
+.swatch-custom input[type="color"]{
+  position:absolute; inset:-4px; width:calc(100% + 8px); height:calc(100% + 8px);
+  border:none; padding:0; cursor:pointer; background:none;
+}
+.swatch-custom svg{ width:15px; height:15px; color:var(--muted-2); pointer-events:none; }
+
+.settings-hint{ font-size:11.5px; color:var(--muted-2); margin-top:10px; line-height:1.5; }

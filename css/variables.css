@@ -1,0 +1,70 @@
+/* ============================================================
+   RailSync — Design Tokens
+   Theme is controlled by [data-theme="dark"|"light"] on <html>.
+   Accent is controlled by --accent-h/--accent-s/--accent-l set
+   inline on <html> by js/theme.js (user-customizable color).
+   ============================================================ */
+
+:root{
+  /* ---- user-customizable accent (HSL channels, overridden inline) ---- */
+  --accent-h: 25;   /* signal orange hue */
+  --accent-s: 100%;
+  --accent-l: 50%;
+
+  --accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l));
+  --accent-strong: hsl(var(--accent-h) var(--accent-s) calc(var(--accent-l) + 12%));
+  --accent-dim: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 15%);
+  --accent-border: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 40%);
+  --accent-glow: hsl(var(--accent-h) var(--accent-s) var(--accent-l) / 55%);
+  --on-accent: #0C0D11;
+
+  --live: #33d6b8;
+  --live-dim: #33d6b81f;
+  --live-border: #33d6b840;
+  --alert: #ff5470;
+  --alert-dim: #ff547026;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+
+  --gap: 16px;
+
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  color-scheme: dark;
+}
+
+/* ---------------- Dark theme (default) ---------------- */
+:root,
+:root[data-theme="dark"]{
+  --bg: #0C0D11;
+  --bg-elevated: #0a1120;
+  --panel: #1E1F25;
+  --panel-2: #25262E;
+  --line: rgba(255,255,255,0.08);
+  --text: #FFFFFF;
+  --muted: #A0A5B5;
+  --muted-2: #6B7080;
+  --nav-bg: #0a1120e8;
+  --shadow-ambient: rgba(0,0,0,0.35);
+}
+
+/* ---------------- Light theme ---------------- */
+:root[data-theme="light"]{
+  color-scheme: light;
+  --bg: #F4F5F8;
+  --bg-elevated: #FFFFFF;
+  --panel: #FFFFFF;
+  --panel-2: #EEF0F4;
+  --line: rgba(15,17,24,0.09);
+  --text: #12131A;
+  --muted: #565C6D;
+  --muted-2: #8B90A0;
+  --nav-bg: #ffffffe8;
+  --shadow-ambient: rgba(20,24,40,0.12);
+  --on-accent: #0C0D11;
+}
