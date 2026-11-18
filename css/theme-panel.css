@@ -58,3 +58,53 @@
 .swatch-custom svg{ width:15px; height:15px; color:var(--muted-2); pointer-events:none; }
 
 .settings-hint{ font-size:11.5px; color:var(--muted-2); margin-top:10px; line-height:1.5; }
+
+
+/* Floating Settings Button */
+.settings-float {
+  position: fixed;
+  top: 18px;
+  right: max(18px, calc((100vw - 480px) / 2 + 18px));
+  z-index: 80;
+
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  color: var(--text);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  cursor: pointer;
+  transition:
+    background .2s ease,
+    border-color .2s ease,
+    transform .2s ease;
+}
+
+.settings-float svg {
+  width: 19px;
+  height: 19px;
+}
+
+.settings-float:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.settings-float:active {
+  transform: scale(.92);
+}
+
+.settings-float:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
