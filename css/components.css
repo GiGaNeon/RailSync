@@ -15,7 +15,7 @@
 
 /* ---------------- Top bar ---------------- */
 .topbar{
-  position: sticky; top:0; z-index: 40;
+  /* position: sticky; top:0; z-index: 40; */
   background: linear-gradient(180deg, var(--bg) 70%, transparent);
   backdrop-filter: blur(10px);
   padding: 18px 18px 12px;
